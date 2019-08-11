@@ -6,7 +6,7 @@ jobs:                                       # ジョブリスト
     steps:                                  # 実行するステップリスト
       - uses: actions/checkout@master         # 利用するアクション
       - name: Run a one-line script           # 実行するステップの名前
-        run: echo Hello, world!               # 実行処理
+        run: echo Hello, world!!               # 実行処理
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
