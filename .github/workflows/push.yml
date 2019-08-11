@@ -1,10 +1,13 @@
-on: push
-name: New workflow
-jobs:
-  gitHubActionForNpm:
-    name: GitHub Action for npm
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: GitHub Action for npm
-      uses: actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680
+name: CI                                    # CI/CD名
+on: [push]                                  # 実行のトリガー
+jobs:                                       # ジョブリスト
+  build:                                    # ジョブ（名）定義
+    runs-on: ubuntu-latest                  # 実行するマシン
+    steps:                                  # 実行するステップリスト
+      - uses: actions/checkout@master         # 利用するアクション
+      - name: Run a one-line script           # 実行するステップの名前
+        run: echo Hello, world!               # 実行処理
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
