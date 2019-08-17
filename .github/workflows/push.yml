@@ -1,13 +1,23 @@
-name: CI                                    # CI/CD名
-on: [push]                                  # 実行のトリガー
-jobs:                                       # ジョブリスト
-  build:                                    # ジョブ（名）定義
-    runs-on: ubuntu-latest                  # 実行するマシン
-    steps:                                  # 実行するステップリスト
-      - uses: actions/checkout@master         # 利用するアクション
-      - name: Run a one-line script           # 実行するステップの名前
-        run: echo Hello, world!               # 実行処理
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+name: "CI"
+on: [push]
+
+jobs:
+  check_pr:
+    strategy:
+      matrix:
+        node: [10.x, 12.x]
+        os: [ubuntu-18.04, ubuntu-16.04]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup node version
+        uses: actions/setup-node@master
+        with:
+          version: ${{ matrix.node }}
+
+      - name: "yarn"
+        run: yarn
+
+      - name: "yarn lint"
+        run: yarn lint
