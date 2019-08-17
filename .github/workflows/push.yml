@@ -19,5 +19,5 @@ jobs:
       - name: "yarn"
         run: yarn
 
-      - name: "yarn lint:fix"
-        run: yarn lint:fix
+      - name: "yarn lint"
+        run: yarn lint
