@@ -16,5 +16,8 @@ jobs:
         with:
           version: ${{ matrix.node }}
 
+      - name: "npm install"
+        run: npm install
+
       - name: "npm run lint:fix"
         run: npm run lint:fix
